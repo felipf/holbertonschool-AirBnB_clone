@@ -8,9 +8,10 @@ class BaseModel:
     """ class construct """
 
     def __init__(self):
+        """initialization value"""
         self.id = str(uuid4())
-        self.created_at = datetime.today()
-        self.updated_at = datetime.today()
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
 
     def __str__(self):
         """string representation"""
@@ -18,7 +19,7 @@ class BaseModel:
 
     def save(self):
         """update_at takes an update of the current time"""
-        self.update_at = datetime.today()
+        self.update_at = datetime.now()
 
     def to_dict(self):
         """dictionary containing all keys/values of the instance"""
