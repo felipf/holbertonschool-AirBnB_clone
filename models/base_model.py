@@ -23,8 +23,8 @@ class BaseModel:
 
     def to_dict(self):
         """dictionary containing all keys/values of the instance"""
-        auxDict = self.__dict__
-        auxDict["__class__"] = self.__class__
-        auxDict['created_at'] = auxDict['created_at'].isoformat()
-        auxDict['updated_at'] = auxDict['updated_at'].isoformat()
+        auxDict = self.__dict__.copy()
+        auxDict['__class__'] = self.__class__.__name__
+        auxDict['created_at'] = self.created_at.isoformat()
+        auxDict['updated_at'] = self.update_at.isoformat()
         return auxDict
