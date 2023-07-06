@@ -19,12 +19,12 @@ class BaseModel:
 
     def save(self):
         """update_at takes an update of the current time"""
-        self.update_at = datetime.now()
+        self.updated_at = datetime.now()
 
     def to_dict(self):
         """dictionary containing all keys/values of the instance"""
         auxDict = self.__dict__.copy()
         auxDict['__class__'] = self.__class__.__name__
         auxDict['created_at'] = self.created_at.isoformat()
-        auxDict['updated_at'] = self.update_at.isoformat()
+        auxDict['updated_at'] = self.updated_at.isoformat()
         return auxDict
