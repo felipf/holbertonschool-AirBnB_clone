@@ -26,7 +26,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(model_dict['created_at'], model.created_at.isoformat())
         self.assertEqual(model_dict['updated_at'], model.updated_at.isoformat())
 
-        # Verificar que el valor de 'id' es un UUID válido
+        """ Verificar que el valor de 'id' es un UUID válido"""
         self.assertIsInstance(UUID(model_dict['id']), UUID)
 
     def test_str(self):
