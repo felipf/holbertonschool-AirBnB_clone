@@ -4,6 +4,7 @@ serialization and deserialization of json file instances
 """
 import json
 from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
