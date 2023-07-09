@@ -16,6 +16,17 @@ class TestUser(unittest.TestCase):
         str2 = str(strObject)
         self.assertEqual(str1, str2)
 
+    def test_id(self):
+        """ test that id is unique """
+        objectId1 = User()
+        objectId2 = User()
+        self.assertNotEqual(objectId1.id, objectId2.id)
+
+    def test_initOfUser(self):
+        """test if object is type User"""
+        object1 = User()
+        self.assertIsInstance(object1, User)
+
     def test_save(self):
         """ checks if date is updated if save """
         objectUpdate = User()
