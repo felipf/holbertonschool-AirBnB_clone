@@ -1,14 +1,15 @@
 #!/usr/bin/python3
 """ Console """
 import cmd
-from models import storage
+import models
 from models.base_model import BaseModel
 from models.user import User
 
+
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
-    
-    valid_classes = ["BaseModel"]["User"]
+
+    valid_classes = {'BaseModel': BaseModel, 'User': User}
 
     def do_quit(self, arg):
         """Quit the program"""
@@ -36,6 +37,7 @@ class HBNBCommand(cmd.Cmd):
         new_instance = eval(class_name)()
         new_instance.save()
         print(new_instance.id)
+        models.storage.save()
 
     def do_show(self, arg):
         """Show the string representation of an instance"""
@@ -55,7 +57,7 @@ class HBNBCommand(cmd.Cmd):
 
         instance_id = args[1]
         key = "{}.{}".format(class_name, instance_id)
-        instances = storage.all()
+        instances = models.storage.all()
 
         if key in instances:
             print(instances[key])
@@ -80,17 +82,17 @@ class HBNBCommand(cmd.Cmd):
 
         instance_id = args[1]
         key = "{}.{}".format(class_name, instance_id)
-        instances = storage.all()
+        instances = models.storage.all()
 
         if key in instances:
             del instances[key]
-            storage.save()
+            models.storage.save()
         else:
             print("** no instance found **")
 
     def do_all(self, arg):
         """Print string representation of all instances"""
-        instances = storage.all()
+        instances = models.storage.all()
 
         if not arg:
             print([str(instance) for instance in instances.values()])
@@ -123,7 +125,7 @@ class HBNBCommand(cmd.Cmd):
 
         instance_id = args[1]
         key = "{}.{}".format(class_name, instance_id)
-        instances = storage.all()
+        instances = models.storage.all()
 
         if key not in instances:
             print("** no instance found **")
@@ -141,7 +143,8 @@ class HBNBCommand(cmd.Cmd):
         attr_value = args[3]
         instance = instances[key]
         setattr(instance, attr_name, attr_value)
-        instance.save()
+        instance = models.storage.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

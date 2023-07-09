@@ -7,7 +7,7 @@ from models.base_model import BaseModel
 from models.user import User
 
 
-class FileStorage:
+class FileStorage():
     """storage class initialization"""
     __file_path = "file.json"
     __objects = {}
