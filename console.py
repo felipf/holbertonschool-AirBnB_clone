@@ -14,9 +14,9 @@ from models.user import User
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
 
-    valid_classes = {'BaseModel': BaseModel, 'User': User, 
-                    'City': City, 'Place': Place, 'Review': Review,
-                    'Amenity': Amenity, 'State': State}
+    valid_classes = {'BaseModel': BaseModel, 'User': User,
+                     'City': City, 'Place': Place, 'Review': Review,
+                     'Amenity': Amenity, 'State': State}
 
     def do_quit(self, arg):
         """Quit the program"""
